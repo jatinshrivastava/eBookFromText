@@ -37,14 +37,14 @@ class WhatsAppChatParser:
       
     def __extractQuoteList(self, chateExportFile ):
         fileHandler = open (chateExportFile, "r", encoding="utf8")
-        timeStamp = re.compile("^\s*\[.*\]")
+        timeStamp = re.compile("^.*\[.*\]")
         with open('config.json') as config_file:
             data = json.load(config_file)
         mFrom = data['messagesFrom']
         if ( mFrom == 'All' ):
-            messageStartPattern = re.compile("^\s*\[.*\] .*: ")
+            messageStartPattern = re.compile("^.*\[.*\] .*: ")
         else:
-            messageStartPattern = re.compile("^\s*\[.*\] "+mFrom+": ")
+            messageStartPattern = re.compile("^.*\[.*\] "+mFrom+": ")
         message = ""
         insideMessage = False
                       
