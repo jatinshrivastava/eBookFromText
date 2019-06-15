@@ -93,7 +93,7 @@ class WhatsAppChatParser:
                   title = slide.shapes.title
                   subtitle = slide.placeholders[1]
                   title.text = i
-                  subtitle.text = "subtitle"
+                  subtitle.text = " "
         prs.save('output.pptx')
   
 
