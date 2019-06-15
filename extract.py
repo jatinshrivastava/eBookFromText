@@ -1,6 +1,8 @@
 import re
 import sys
 import json
+from pptx import Presentation
+
 
 class WhatsAppChatParser:
     def __init__(self, chateExportFile ):
@@ -78,6 +80,22 @@ class WhatsAppChatParser:
         if ( insideMessage ):
             self.quoteList.append(message)
         #print ("MessageCount = " + str(len(self.quoteList)))
+        self.slideMaking(self.quoteList)
+    
+    def slideMaking(self,quoteList):
+        prs = Presentation()
+        title_slide_layout = prs.slide_layouts[0]
+
+        i=0
+        string=" "
+        for i in quoteList:
+                  slide = prs.slides.add_slide(title_slide_layout)
+                  title = slide.shapes.title
+                  subtitle = slide.placeholders[1]
+                  title.text = i
+                  subtitle.text = "subtitle"
+        prs.save('output.pptx')
+  
 
 
     def getNextQuote(self):
