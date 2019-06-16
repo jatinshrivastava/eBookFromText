@@ -99,25 +99,22 @@ class WhatsAppChatParser:
         string=" "
         with open('config.json') as config_file:
             data = json.load(config_file)
-        #shapeType = data['shapeType']
-        #fontSize = data['fontSize']
-        left = data['left']
-        top = data['top']
-        width = data['width']
-        height = data['height']
-        leftFloat = float(left)
-        topFloat = float(top)
-        widthFloat = float(width)
-        heightFloat = float(height)
-        left = Inches(leftFloat)  # 0.93" centers this overall set of shapes
-        top = Inches(topFloat)
-        width = Inches(widthFloat)
-        height = Inches(heightFloat)
+        shapeType = data['shapeType']
+        fontSize = int(data['fontSize'])
+        left = Inches(float(data['left']))
+        top = Inches(float(data['top']))
+        width = Inches(float(data['width']))
+        height = Inches(float(data['height']))
+        shapemap = {}
+        shapemap['rectangle'] = MSO_SHAPE.RECTANGLE
+        shapemap['round rectangle'] = MSO_SHAPE.ROUNDED_RECTANGLE
+        shapemap['curved ribbon'] = MSO_SHAPE.CURVED_UP_RIBBON
+
         
         for i in quoteList:
                   slide = prs.slides.add_slide(title_slide_layout)
                   shapes = slide.shapes
-                  shape = shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+                  shape = shapes.add_shape(shapemap[shapeType], left, top, width, height)
                   fill = shape.fill
                   fill.solid()
                   #fill.fore_color.rgb = RGBColor(0, 0, 0)
@@ -131,7 +128,7 @@ class WhatsAppChatParser:
                   run.text = i
                   font = run.font
                   font.name = 'Calibri'
-                  font.size = Pt(28)
+                  font.size = Pt(fontSize)
                   font.bold = False
                   font.italic = None  # cause value to be inherited from theme
                   font.color.rgb = RGBColor(0, 0, 0)
@@ -193,14 +190,14 @@ def runTestSuite():
 def main():
     input_file = sys.argv[1]
     chatparser = WhatsAppChatParser(input_file)
-    quote = chatparser.getNextQuote()
-    print(quote + "\n#######\n")
-    quote = chatparser.getNextQuote()
-    print(quote + "\n#######\n")
-    quote = chatparser.getNextQuote()
-    print(quote + "\n#######\n")
-    quote = chatparser.getNextQuote()
-    print(quote + "\n#######\n")
+    while True:
+        try:
+           quote = chatparser.getNextQuote()
+           print(quote + "\n#######\n")
+        except:
+           break
+    
+    
 
 
 
