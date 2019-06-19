@@ -1,4 +1,3 @@
-import re
 import sys
 import json
 from pptx import Presentation
