@@ -1,5 +1,15 @@
 # Chat to eBook
 
+What problem does it solve? Background
+
+What are the prerequisites to use this application?
+
+Application Features?
+
+How do we execute this application?
+
+Configurations?
+
 
 ## Purpose
 To create a simple software for converting the chats into a pdf file. 
