@@ -4,12 +4,12 @@ import json
 
 
 class WhatsAppChatParser:
-    def __init__(self, chateExportFile ):
+    def __init__(self, chatExportFile ):
         self.quoteList = []
         self.ignoredList = []
         self.quoteIndex = 0
         self.deletedPattern()
-        self.__extractQuoteList(chateExportFile)
+        self.__extractQuoteList(chatExportFile)
 
     def deletedPattern(self):
         messageYouDeletedMsgPattern = "^\s*\[.*\] .*: You deleted this message."
@@ -34,8 +34,8 @@ class WhatsAppChatParser:
         return (False)
 
 
-    def __extractQuoteList(self, chateExportFile ):
-        fileHandler = open (chateExportFile, "r", encoding="utf8")
+    def __extractQuoteList(self, chatExportFile ):
+        fileHandler = open (chatExportFile, "r", encoding="utf8")
         timeStamp = re.compile(".*\s*\[.*\]")
         with open('config.json') as config_file:
             data = json.load(config_file)
