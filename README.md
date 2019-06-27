@@ -6,6 +6,8 @@ Our software predominantly deals with automatic creation of presentation slide w
 This sodftware is not very demanding and requires only the installation of python into the pc and also user needs to be fimilar with the commands that are required for operation within this software. Also the input file should be in the same directory as that of software.
 
 Below is the command required for pptx generation:
+
+
   python orchestrataor.py <inputfile_name> <Outputfile_name.pptx>
   
 ## Features
