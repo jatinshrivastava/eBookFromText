@@ -7,7 +7,7 @@ This software is not very demanding and requires only the installation of python
 
 Below is the command required for pptx generation:
 
-       python orchestrataor.py <inputfile_name> <Outputfile_name.pptx>
+       python orchestrataor.py <inputfile_name.txt> <Outputfile_name.pptx>
   
 ## Features
 Features of this application involved fully customization of shapes used within slides, font shapes,  colors, and the person whose quote needed to be extracted.
