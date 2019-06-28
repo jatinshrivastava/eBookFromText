@@ -2,8 +2,6 @@ import sys
 import json
 import os.path
 from os import path
-from pptx.util import Inches, Pt
-from pptx.enum.shapes import MSO_SHAPE
 from texttoppt.orchestrator import TextToPPTOrchestrator 
 
 try:
@@ -13,14 +11,10 @@ try:
         author = data['messagesFrom']
         shapeType = data['shapeType']
         fontSize = int(data['fontSize'])
-        left = Inches(float(data['left']))
-        top = Inches(float(data['top']))
-        width = Inches(float(data['width']))
-        height = Inches(float(data['height']))
-        shapemap = {}
-        shapemap['rectangle'] = MSO_SHAPE.RECTANGLE
-        shapemap['round rectangle'] = MSO_SHAPE.ROUNDED_RECTANGLE
-        shapemap['curved ribbon'] = MSO_SHAPE.CURVED_UP_RIBBON
+        left = float(data['left'])
+        top = float(data['top'])
+        width = float(data['width'])
+        height = float(data['height'])
         orc = TextToPPTOrchestrator()
         orc.SetMessageAuthor(author)
         orc.SetShapeType(shapeType)
